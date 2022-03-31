@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C7D2E6F4-A3EA-4DED-AD16-2568536059C0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MailDispatcher</RootNamespace>
+    <AssemblyName>MailDispatcher</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.Composition.registration" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entity\ChangeManagementDetail.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ChangeManagementMaster.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Classes.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ClassesDetail.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Classrooms.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ClassroomsQ.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ClassSubjects.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID1_Result.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyIDMD_Result.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyIDTch_Result.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID_Result.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID_Result1.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID_Result2.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID_Result3.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMbyID_Result4.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CMDeatailbyID_Result.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Ostalazaduzenja.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Periods.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\PredmetiUsmjerenja.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Smjerovi.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SubjectDetail.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Subjects.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TeacherQ.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Teachers.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TeacherSubjects.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TesladbMD.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TesladbMD.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TesladbMD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\TesladbMD.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TesladbMD.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Turnusi.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Usmjerenja.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UsmjerenjeRazred.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\VrstaPredmeta.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\VrstaRO.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Zvanje.cs">
+      <DependentUpon>TesladbMD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="Entity\TesladbMD.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TesladbMD.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\TesladbMD.edmx.diagram">
+      <DependentUpon>TesladbMD.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entity\TesladbMD.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TesladbMD.edmx</DependentUpon>
+      <LastGenOutput>TesladbMD.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\TesladbMD.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TesladbMD.edmx</DependentUpon>
+      <LastGenOutput>TesladbMD.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

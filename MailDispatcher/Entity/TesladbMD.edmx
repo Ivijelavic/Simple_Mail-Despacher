@@ -1,0 +1,1240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dBTeslaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ChangeManagementDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_CMaster" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_TeachersCM" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Subject" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Period" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Classrom" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Class" Type="uniqueidentifier" />
+          <Property Name="Status" Type="int" />
+          <Property Name="ID_Subject_CM" Type="uniqueidentifier" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Mail" Type="int" />
+          <Property Name="ID_StatusCM" Type="uniqueidentifier" />
+          <Property Name="Pay" Type="bit" />
+          <Property Name="Poruka" Type="nvarchar(max)" />
+          <Property Name="ClanRV" Type="bit" />
+        </EntityType>
+        <EntityType Name="ChangeManagementMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="ID_Teachers" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" />
+          <Property Name="Mail" Type="int" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IDSmjer" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID_ClassDetail" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="ClassesDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Usmjerenje" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Class" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="ID_version" Type="uniqueidentifier" />
+          <Property Name="ID_Razrednik" Type="uniqueidentifier" />
+          <Property Name="ID_ZamjenikRazrednika" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Classrooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Number" Type="nvarchar" MaxLength="50" />
+          <Property Name="Capacity" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID_ClassroomQ" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="ClassroomsQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ShorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="ClassSubjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Subject" Type="uniqueidentifier" />
+          <Property Name="ID_Class" Type="uniqueidentifier" />
+          <Property Name="ID_Teacher" Type="uniqueidentifier" />
+          <Property Name="ID_version" Type="uniqueidentifier" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="StatusMP" Type="int" />
+        </EntityType>
+        <EntityType Name="Ostalazaduzenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Period" Type="int" />
+          <Property Name="Short" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Starttime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Endtime" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="Sort" Type="int" />
+        </EntityType>
+        <EntityType Name="PredmetiUsmjerenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Id_Subject" Type="uniqueidentifier" />
+          <Property Name="Id_Usmjerenje" Type="uniqueidentifier" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="Smjerovi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Norma" Type="int" />
+          <Property Name="Datum" Type="datetime" />
+          <Property Name="Nastava" Type="int" />
+          <Property Name="Vjezbe" Type="int" />
+          <Property Name="ID_Usmjerenje" Type="uniqueidentifier" />
+          <Property Name="ID_Subject" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID_Smjerovi" Type="uniqueidentifier" />
+          <Property Name="ID_SubjectDetail" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="TeacherQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ParentID" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="char" MaxLength="1" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="255" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID_Teacherq" Type="uniqueidentifier" />
+          <Property Name="Razrednik" Type="bit" />
+        </EntityType>
+        <EntityType Name="TeacherSubjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Subject" Type="uniqueidentifier" />
+          <Property Name="ID_Teacher" Type="uniqueidentifier" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="StatusMP" Type="int" />
+        </EntityType>
+        <EntityType Name="Turnusi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="idTimeLine" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Usmjerenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="int" Nullable="false" />
+          <Property Name="ID_smjerovi" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="UsmjerenjeRazred">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ID_Subject" Type="uniqueidentifier" />
+          <Property Name="ID_Teacher" Type="uniqueidentifier" />
+          <Property Name="ID_Class" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Datum" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+          <Property Name="ID_version" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="VrstaPredmeta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Datum" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VrstaRO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Datum" Type="datetime" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dBTesla.dbo.Zvanje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Zvanje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Datum" Type="datetime" />
+        </EntityType>
+        <Function Name="CMbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CMbyIDMD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CMbyIDTch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+          <Parameter Name="ParentGuidTCH" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="CMDeatailbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dBTeslaModelStoreContainer">
+          <EntitySet Name="ChangeManagementDetail" EntityType="Self.ChangeManagementDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChangeManagementMaster" EntityType="Self.ChangeManagementMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassesDetail" EntityType="Self.ClassesDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Classrooms" EntityType="Self.Classrooms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassroomsQ" EntityType="Self.ClassroomsQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClassSubjects" EntityType="Self.ClassSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ostalazaduzenja" EntityType="Self.Ostalazaduzenja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PredmetiUsmjerenja" EntityType="Self.PredmetiUsmjerenja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smjerovi" EntityType="Self.Smjerovi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubjectDetail" EntityType="Self.SubjectDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherQ" EntityType="Self.TeacherQ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TeacherSubjects" EntityType="Self.TeacherSubjects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Turnusi" EntityType="Self.Turnusi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usmjerenja" EntityType="Self.Usmjerenja" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsmjerenjeRazred" EntityType="Self.UsmjerenjeRazred" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VrstaPredmeta" EntityType="Self.VrstaPredmeta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VrstaRO" EntityType="Self.VrstaRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zvanje" EntityType="Self.Zvanje" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Zvanje].[ID] AS [ID], 
+    [Zvanje].[Name] AS [Name], 
+    [Zvanje].[Kratica] AS [Kratica], 
+    [Zvanje].[Status] AS [Status], 
+    [Zvanje].[Datum] AS [Datum]
+    FROM [dbo].[Zvanje] AS [Zvanje]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dBTeslaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ChangeManagementDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ID_CMaster" Type="Guid" Nullable="false" />
+          <Property Name="ID_TeachersCM" Type="Guid" Nullable="false" />
+          <Property Name="ID_Subject" Type="Guid" Nullable="false" />
+          <Property Name="ID_Period" Type="Guid" Nullable="false" />
+          <Property Name="ID_Classrom" Type="Guid" Nullable="false" />
+          <Property Name="ID_Class" Type="Guid" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="ID_Subject_CM" Type="Guid" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Mail" Type="Int32" />
+          <Property Name="ID_StatusCM" Type="Guid" />
+          <Property Name="Pay" Type="Boolean" />
+          <Property Name="Poruka" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClanRV" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="ChangeManagementMaster">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="ID_Teachers" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+          <Property Name="Mail" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Classes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="IDSmjer" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_ClassDetail" Type="Guid" />
+        </EntityType>
+        <EntityType Name="ClassesDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ID_Usmjerenje" Type="Guid" Nullable="false" />
+          <Property Name="ID_Class" Type="Guid" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="ID_version" Type="Guid" />
+          <Property Name="ID_Razrednik" Type="Guid" />
+          <Property Name="ID_ZamjenikRazrednika" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Classrooms">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Capacity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_ClassroomQ" Type="Guid" />
+        </EntityType>
+        <EntityType Name="ClassroomsQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ClassSubjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ID_Subject" Type="Guid" />
+          <Property Name="ID_Class" Type="Guid" />
+          <Property Name="ID_Teacher" Type="Guid" />
+          <Property Name="ID_version" Type="Guid" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="StatusMP" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ostalazaduzenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Periods">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Period" Type="Int32" />
+          <Property Name="Short" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Starttime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Endtime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="Sort" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PredmetiUsmjerenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Id_Subject" Type="Guid" />
+          <Property Name="Id_Usmjerenje" Type="Guid" />
+          <Property Name="Status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Smjerovi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubjectDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Norma" Type="Int32" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+          <Property Name="Nastava" Type="Int32" />
+          <Property Name="Vjezbe" Type="Int32" />
+          <Property Name="ID_Usmjerenje" Type="Guid" />
+          <Property Name="ID_Subject" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Subjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_Smjerovi" Type="Guid" />
+          <Property Name="ID_SubjectDetail" Type="Guid" />
+        </EntityType>
+        <EntityType Name="TeacherQ">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ParentID" Type="Guid" />
+        </EntityType>
+        <EntityType Name="Teachers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="Firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_Teacherq" Type="Guid" />
+          <Property Name="Razrednik" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="TeacherSubjects">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ID_Subject" Type="Guid" />
+          <Property Name="ID_Teacher" Type="Guid" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="StatusMP" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Turnusi">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="idTimeLine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Usmjerenja">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ShortName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
+          <Property Name="ID_smjerovi" Type="Guid" />
+        </EntityType>
+        <EntityType Name="UsmjerenjeRazred">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ID_Subject" Type="Guid" />
+          <Property Name="ID_Teacher" Type="Guid" />
+          <Property Name="ID_Class" Type="Guid" Nullable="false" />
+          <Property Name="Datum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <Property Name="ID_version" Type="Guid" />
+        </EntityType>
+        <EntityType Name="VrstaPredmeta">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kratica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="VrstaRO">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kratica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Zvanje">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Kratica" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Datum" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="dBTeslaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ChangeManagementDetail" EntityType="Self.ChangeManagementDetail" />
+          <EntitySet Name="ChangeManagementMaster" EntityType="Self.ChangeManagementMaster" />
+          <EntitySet Name="Classes" EntityType="Self.Classes" />
+          <EntitySet Name="ClassesDetail" EntityType="Self.ClassesDetail" />
+          <EntitySet Name="Classrooms" EntityType="Self.Classrooms" />
+          <EntitySet Name="ClassroomsQ" EntityType="Self.ClassroomsQ" />
+          <EntitySet Name="ClassSubjects" EntityType="Self.ClassSubjects" />
+          <EntitySet Name="Ostalazaduzenja" EntityType="Self.Ostalazaduzenja" />
+          <EntitySet Name="Periods" EntityType="Self.Periods" />
+          <EntitySet Name="PredmetiUsmjerenja" EntityType="Self.PredmetiUsmjerenja" />
+          <EntitySet Name="Smjerovi" EntityType="Self.Smjerovi" />
+          <EntitySet Name="SubjectDetail" EntityType="Self.SubjectDetail" />
+          <EntitySet Name="Subjects" EntityType="Self.Subjects" />
+          <EntitySet Name="TeacherQ" EntityType="Self.TeacherQ" />
+          <EntitySet Name="Teachers" EntityType="Self.Teachers" />
+          <EntitySet Name="TeacherSubjects" EntityType="Self.TeacherSubjects" />
+          <EntitySet Name="Turnusi" EntityType="Self.Turnusi" />
+          <EntitySet Name="Usmjerenja" EntityType="Self.Usmjerenja" />
+          <EntitySet Name="UsmjerenjeRazred" EntityType="Self.UsmjerenjeRazred" />
+          <EntitySet Name="VrstaPredmeta" EntityType="Self.VrstaPredmeta" />
+          <EntitySet Name="VrstaRO" EntityType="Self.VrstaRO" />
+          <EntitySet Name="Zvanje" EntityType="Self.Zvanje" />
+          <FunctionImport Name="CMbyID" ReturnType="Collection(dBTeslaModel.CMbyID_Result4)">
+          <Parameter Name="ParentGuid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CMDeatailbyID" ReturnType="Collection(dBTeslaModel.CMDeatailbyID_Result)">
+          <Parameter Name="ParentGuid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CMbyIDMD" ReturnType="Collection(dBTeslaModel.CMbyIDMD_Result)">
+          <Parameter Name="ParentGuid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="CMbyIDTch" ReturnType="Collection(dBTeslaModel.CMbyIDTch_Result)">
+            <Parameter Name="ParentGuid" Mode="In" Type="String" />
+            <Parameter Name="ParentGuidTCH" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="CMbyID_Result">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyID1_Result">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyID_Result1">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyID_Result2">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="CMbyID_Result3">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyID_Result4">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+          <Property Type="Guid" Name="ID_TeachersCM" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="CMDeatailbyID_Result">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+          <Property Type="Guid" Name="ID_TeachersCM" Nullable="false" />
+          <Property Type="Boolean" Name="ClanRV" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyIDMD_Result">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+          <Property Type="Guid" Name="ID_TeachersCM" Nullable="false" />
+          <Property Type="Boolean" Name="ClanRV" Nullable="true" />
+          <Property Type="Int32" Name="Period" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="CMbyIDTch_Result">
+          <Property Type="Guid" Name="ID" Nullable="true" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="Razred" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Sat" Nullable="true" MaxLength="103" />
+          <Property Type="String" Name="SubjectsEx" Nullable="true" />
+          <Property Type="String" Name="ProfCM" Nullable="true" MaxLength="255" />
+          <Property Type="String" Name="SubjectsCm" Nullable="true" />
+          <Property Type="String" Name="Kabinet" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="ID_Period" Nullable="false" />
+          <Property Type="String" Name="Short" Nullable="true" MaxLength="50" />
+          <Property Type="Guid" Name="IDClass" Nullable="false" />
+          <Property Type="Guid" Name="IDSubject" Nullable="false" />
+          <Property Type="Guid" Name="IDSubjecEx" Nullable="false" />
+          <Property Type="Guid" Name="TeachersIDCM" Nullable="true" />
+          <Property Type="Guid" Name="ID_Classrom" Nullable="false" />
+          <Property Type="Guid" Name="IDCMdetail" Nullable="false" />
+          <Property Type="Boolean" Name="Pay" Nullable="true" />
+          <Property Type="Guid" Name="ID_StatusCM" Nullable="true" />
+          <Property Type="String" Name="Poruka" Nullable="true" />
+          <Property Type="Int32" Name="Mail" Nullable="true" />
+          <Property Type="DateTime" Name="Datum" Nullable="true" />
+          <Property Type="Guid" Name="ID_TeachersCM" Nullable="false" />
+          <Property Type="Boolean" Name="ClanRV" Nullable="true" />
+          <Property Type="Int32" Name="Period" Nullable="true" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dBTeslaModelStoreContainer" CdmEntityContainer="dBTeslaEntities">
+          <EntitySetMapping Name="ChangeManagementDetail">
+            <EntityTypeMapping TypeName="dBTeslaModel.ChangeManagementDetail">
+              <MappingFragment StoreEntitySet="ChangeManagementDetail">
+                <ScalarProperty Name="ClanRV" ColumnName="ClanRV" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+                <ScalarProperty Name="ID_StatusCM" ColumnName="ID_StatusCM" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_CMaster" ColumnName="ID_CMaster" />
+                <ScalarProperty Name="ID_TeachersCM" ColumnName="ID_TeachersCM" />
+                <ScalarProperty Name="ID_Subject" ColumnName="ID_Subject" />
+                <ScalarProperty Name="ID_Period" ColumnName="ID_Period" />
+                <ScalarProperty Name="ID_Classrom" ColumnName="ID_Classrom" />
+                <ScalarProperty Name="ID_Class" ColumnName="ID_Class" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_Subject_CM" ColumnName="ID_Subject_CM" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChangeManagementMaster">
+            <EntityTypeMapping TypeName="dBTeslaModel.ChangeManagementMaster">
+              <MappingFragment StoreEntitySet="ChangeManagementMaster">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_Teachers" ColumnName="ID_Teachers" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classes">
+            <EntityTypeMapping TypeName="dBTeslaModel.Classes">
+              <MappingFragment StoreEntitySet="Classes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IDSmjer" ColumnName="IDSmjer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_ClassDetail" ColumnName="ID_ClassDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassesDetail">
+            <EntityTypeMapping TypeName="dBTeslaModel.ClassesDetail">
+              <MappingFragment StoreEntitySet="ClassesDetail">
+                <ScalarProperty Name="ID_ZamjenikRazrednika" ColumnName="ID_ZamjenikRazrednika" />
+                <ScalarProperty Name="ID_Razrednik" ColumnName="ID_Razrednik" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Usmjerenje" ColumnName="ID_Usmjerenje" />
+                <ScalarProperty Name="ID_Class" ColumnName="ID_Class" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_version" ColumnName="ID_version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classrooms">
+            <EntityTypeMapping TypeName="dBTeslaModel.Classrooms">
+              <MappingFragment StoreEntitySet="Classrooms">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_ClassroomQ" ColumnName="ID_ClassroomQ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassroomsQ">
+            <EntityTypeMapping TypeName="dBTeslaModel.ClassroomsQ">
+              <MappingFragment StoreEntitySet="ClassroomsQ">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShorName" ColumnName="ShorName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassSubjects">
+            <EntityTypeMapping TypeName="dBTeslaModel.ClassSubjects">
+              <MappingFragment StoreEntitySet="ClassSubjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Subject" ColumnName="ID_Subject" />
+                <ScalarProperty Name="ID_Class" ColumnName="ID_Class" />
+                <ScalarProperty Name="ID_Teacher" ColumnName="ID_Teacher" />
+                <ScalarProperty Name="ID_version" ColumnName="ID_version" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusMP" ColumnName="StatusMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ostalazaduzenja">
+            <EntityTypeMapping TypeName="dBTeslaModel.Ostalazaduzenja">
+              <MappingFragment StoreEntitySet="Ostalazaduzenja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periods">
+            <EntityTypeMapping TypeName="dBTeslaModel.Periods">
+              <MappingFragment StoreEntitySet="Periods">
+                <ScalarProperty Name="Sort" ColumnName="Sort" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Starttime" ColumnName="Starttime" />
+                <ScalarProperty Name="Endtime" ColumnName="Endtime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PredmetiUsmjerenja">
+            <EntityTypeMapping TypeName="dBTeslaModel.PredmetiUsmjerenja">
+              <MappingFragment StoreEntitySet="PredmetiUsmjerenja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id_Subject" ColumnName="Id_Subject" />
+                <ScalarProperty Name="Id_Usmjerenje" ColumnName="Id_Usmjerenje" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smjerovi">
+            <EntityTypeMapping TypeName="dBTeslaModel.Smjerovi">
+              <MappingFragment StoreEntitySet="Smjerovi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubjectDetail">
+            <EntityTypeMapping TypeName="dBTeslaModel.SubjectDetail">
+              <MappingFragment StoreEntitySet="SubjectDetail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Norma" ColumnName="Norma" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Nastava" ColumnName="Nastava" />
+                <ScalarProperty Name="Vjezbe" ColumnName="Vjezbe" />
+                <ScalarProperty Name="ID_Usmjerenje" ColumnName="ID_Usmjerenje" />
+                <ScalarProperty Name="ID_Subject" ColumnName="ID_Subject" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subjects">
+            <EntityTypeMapping TypeName="dBTeslaModel.Subjects">
+              <MappingFragment StoreEntitySet="Subjects">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_Smjerovi" ColumnName="ID_Smjerovi" />
+                <ScalarProperty Name="ID_SubjectDetail" ColumnName="ID_SubjectDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherQ">
+            <EntityTypeMapping TypeName="dBTeslaModel.TeacherQ">
+              <MappingFragment StoreEntitySet="TeacherQ">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="dBTeslaModel.Teachers">
+              <MappingFragment StoreEntitySet="Teachers">
+                <ScalarProperty Name="Razrednik" ColumnName="Razrednik" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_Teacherq" ColumnName="ID_Teacherq" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TeacherSubjects">
+            <EntityTypeMapping TypeName="dBTeslaModel.TeacherSubjects">
+              <MappingFragment StoreEntitySet="TeacherSubjects">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Subject" ColumnName="ID_Subject" />
+                <ScalarProperty Name="ID_Teacher" ColumnName="ID_Teacher" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="StatusMP" ColumnName="StatusMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Turnusi">
+            <EntityTypeMapping TypeName="dBTeslaModel.Turnusi">
+              <MappingFragment StoreEntitySet="Turnusi">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="idTimeLine" ColumnName="idTimeLine" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usmjerenja">
+            <EntityTypeMapping TypeName="dBTeslaModel.Usmjerenja">
+              <MappingFragment StoreEntitySet="Usmjerenja">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_smjerovi" ColumnName="ID_smjerovi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsmjerenjeRazred">
+            <EntityTypeMapping TypeName="dBTeslaModel.UsmjerenjeRazred">
+              <MappingFragment StoreEntitySet="UsmjerenjeRazred">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_Subject" ColumnName="ID_Subject" />
+                <ScalarProperty Name="ID_Teacher" ColumnName="ID_Teacher" />
+                <ScalarProperty Name="ID_Class" ColumnName="ID_Class" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ID_version" ColumnName="ID_version" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaPredmeta">
+            <EntityTypeMapping TypeName="dBTeslaModel.VrstaPredmeta">
+              <MappingFragment StoreEntitySet="VrstaPredmeta">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kratica" ColumnName="Kratica" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VrstaRO">
+            <EntityTypeMapping TypeName="dBTeslaModel.VrstaRO">
+              <MappingFragment StoreEntitySet="VrstaRO">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kratica" ColumnName="Kratica" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zvanje">
+            <EntityTypeMapping TypeName="dBTeslaModel.Zvanje">
+              <MappingFragment StoreEntitySet="Zvanje">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Kratica" ColumnName="Kratica" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CMbyID" FunctionName="dBTeslaModel.Store.CMbyID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dBTeslaModel.CMbyID_Result4">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Razred" ColumnName="Razred" />
+                <ScalarProperty Name="Sat" ColumnName="Sat" />
+                <ScalarProperty Name="SubjectsEx" ColumnName="SubjectsEx" />
+                <ScalarProperty Name="ProfCM" ColumnName="ProfCM" />
+                <ScalarProperty Name="SubjectsCm" ColumnName="SubjectsCm" />
+                <ScalarProperty Name="Kabinet" ColumnName="Kabinet" />
+                <ScalarProperty Name="ID_Period" ColumnName="ID_Period" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="IDClass" ColumnName="IDClass" />
+                <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+                <ScalarProperty Name="IDSubjecEx" ColumnName="IDSubjecEx" />
+                <ScalarProperty Name="TeachersIDCM" ColumnName="TeachersIDCM" />
+                <ScalarProperty Name="ID_Classrom" ColumnName="ID_Classrom" />
+                <ScalarProperty Name="IDCMdetail" ColumnName="IDCMdetail" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+                <ScalarProperty Name="ID_StatusCM" ColumnName="ID_StatusCM" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_TeachersCM" ColumnName="ID_TeachersCM" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CMDeatailbyID" FunctionName="dBTeslaModel.Store.CMDeatailbyID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dBTeslaModel.CMDeatailbyID_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Razred" ColumnName="Razred" />
+                <ScalarProperty Name="Sat" ColumnName="Sat" />
+                <ScalarProperty Name="SubjectsEx" ColumnName="SubjectsEx" />
+                <ScalarProperty Name="ProfCM" ColumnName="ProfCM" />
+                <ScalarProperty Name="SubjectsCm" ColumnName="SubjectsCm" />
+                <ScalarProperty Name="Kabinet" ColumnName="Kabinet" />
+                <ScalarProperty Name="ID_Period" ColumnName="ID_Period" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="IDClass" ColumnName="IDClass" />
+                <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+                <ScalarProperty Name="IDSubjecEx" ColumnName="IDSubjecEx" />
+                <ScalarProperty Name="TeachersIDCM" ColumnName="TeachersIDCM" />
+                <ScalarProperty Name="ID_Classrom" ColumnName="ID_Classrom" />
+                <ScalarProperty Name="IDCMdetail" ColumnName="IDCMdetail" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+                <ScalarProperty Name="ID_StatusCM" ColumnName="ID_StatusCM" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_TeachersCM" ColumnName="ID_TeachersCM" />
+                <ScalarProperty Name="ClanRV" ColumnName="ClanRV" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CMbyIDMD" FunctionName="dBTeslaModel.Store.CMbyIDMD">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dBTeslaModel.CMbyIDMD_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Razred" ColumnName="Razred" />
+                <ScalarProperty Name="Sat" ColumnName="Sat" />
+                <ScalarProperty Name="SubjectsEx" ColumnName="SubjectsEx" />
+                <ScalarProperty Name="ProfCM" ColumnName="ProfCM" />
+                <ScalarProperty Name="SubjectsCm" ColumnName="SubjectsCm" />
+                <ScalarProperty Name="Kabinet" ColumnName="Kabinet" />
+                <ScalarProperty Name="ID_Period" ColumnName="ID_Period" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="IDClass" ColumnName="IDClass" />
+                <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+                <ScalarProperty Name="IDSubjecEx" ColumnName="IDSubjecEx" />
+                <ScalarProperty Name="TeachersIDCM" ColumnName="TeachersIDCM" />
+                <ScalarProperty Name="ID_Classrom" ColumnName="ID_Classrom" />
+                <ScalarProperty Name="IDCMdetail" ColumnName="IDCMdetail" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+                <ScalarProperty Name="ID_StatusCM" ColumnName="ID_StatusCM" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_TeachersCM" ColumnName="ID_TeachersCM" />
+                <ScalarProperty Name="ClanRV" ColumnName="ClanRV" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="CMbyIDTch" FunctionName="dBTeslaModel.Store.CMbyIDTch">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="dBTeslaModel.CMbyIDTch_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Razred" ColumnName="Razred" />
+                <ScalarProperty Name="Sat" ColumnName="Sat" />
+                <ScalarProperty Name="SubjectsEx" ColumnName="SubjectsEx" />
+                <ScalarProperty Name="ProfCM" ColumnName="ProfCM" />
+                <ScalarProperty Name="SubjectsCm" ColumnName="SubjectsCm" />
+                <ScalarProperty Name="Kabinet" ColumnName="Kabinet" />
+                <ScalarProperty Name="ID_Period" ColumnName="ID_Period" />
+                <ScalarProperty Name="Short" ColumnName="Short" />
+                <ScalarProperty Name="IDClass" ColumnName="IDClass" />
+                <ScalarProperty Name="IDSubject" ColumnName="IDSubject" />
+                <ScalarProperty Name="IDSubjecEx" ColumnName="IDSubjecEx" />
+                <ScalarProperty Name="TeachersIDCM" ColumnName="TeachersIDCM" />
+                <ScalarProperty Name="ID_Classrom" ColumnName="ID_Classrom" />
+                <ScalarProperty Name="IDCMdetail" ColumnName="IDCMdetail" />
+                <ScalarProperty Name="Pay" ColumnName="Pay" />
+                <ScalarProperty Name="ID_StatusCM" ColumnName="ID_StatusCM" />
+                <ScalarProperty Name="Poruka" ColumnName="Poruka" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Datum" ColumnName="Datum" />
+                <ScalarProperty Name="ID_TeachersCM" ColumnName="ID_TeachersCM" />
+                <ScalarProperty Name="ClanRV" ColumnName="ClanRV" />
+                <ScalarProperty Name="Period" ColumnName="Period" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

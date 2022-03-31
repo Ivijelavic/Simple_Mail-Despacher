@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dBTeslaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ChangeManagementDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_CMaster" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_TeachersCM" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Subject" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Period" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Classrom" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Class" Type="uniqueidentifier" />
+    <Property Name="Status" Type="int" />
+    <Property Name="ID_Subject_CM" Type="uniqueidentifier" />
+    <Property Name="Datum" Type="datetime" />
+    <Property Name="Mail" Type="int" />
+    <Property Name="ID_StatusCM" Type="uniqueidentifier" />
+    <Property Name="Pay" Type="bit" />
+    <Property Name="Poruka" Type="nvarchar(max)" />
+    <Property Name="ClanRV" Type="bit" />
+  </EntityType>
+  <EntityType Name="ChangeManagementMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Datum" Type="datetime" />
+    <Property Name="ID_Teachers" Type="uniqueidentifier" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Mail" Type="int" />
+  </EntityType>
+  <EntityType Name="Classes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IDSmjer" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ID_ClassDetail" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ClassesDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Usmjerenje" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Class" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Datum" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="ID_version" Type="uniqueidentifier" />
+    <Property Name="ID_Razrednik" Type="uniqueidentifier" />
+    <Property Name="ID_ZamjenikRazrednika" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Classrooms">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Number" Type="nvarchar" MaxLength="50" />
+    <Property Name="Capacity" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ID_ClassroomQ" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ClassroomsQ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ShorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="ClassSubjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Subject" Type="uniqueidentifier" />
+    <Property Name="ID_Class" Type="uniqueidentifier" />
+    <Property Name="ID_Teacher" Type="uniqueidentifier" />
+    <Property Name="ID_version" Type="uniqueidentifier" />
+    <Property Name="Datum" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="StatusMP" Type="int" />
+  </EntityType>
+  <EntityType Name="Ostalazaduzenja">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Periods">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Period" Type="int" />
+    <Property Name="Short" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Starttime" Type="nvarchar" MaxLength="50" />
+    <Property Name="Endtime" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Sort" Type="int" />
+  </EntityType>
+  <EntityType Name="PredmetiUsmjerenja">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Id_Subject" Type="uniqueidentifier" />
+    <Property Name="Id_Usmjerenje" Type="uniqueidentifier" />
+    <Property Name="Status" Type="bit" />
+  </EntityType>
+  <EntityType Name="Smjerovi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubjectDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Norma" Type="int" />
+    <Property Name="Datum" Type="datetime" />
+    <Property Name="Nastava" Type="int" />
+    <Property Name="Vjezbe" Type="int" />
+    <Property Name="ID_Usmjerenje" Type="uniqueidentifier" />
+    <Property Name="ID_Subject" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ID_Smjerovi" Type="uniqueidentifier" />
+    <Property Name="ID_SubjectDetail" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="TeacherQ">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ParentID" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="Teachers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" />
+    <Property Name="Gender" Type="char" MaxLength="1" />
+    <Property Name="Email" Type="nvarchar" MaxLength="255" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="255" />
+    <Property Name="color" Type="nvarchar" MaxLength="50" />
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ID_Teacherq" Type="uniqueidentifier" />
+    <Property Name="Razrednik" Type="bit" />
+  </EntityType>
+  <EntityType Name="TeacherSubjects">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Subject" Type="uniqueidentifier" />
+    <Property Name="ID_Teacher" Type="uniqueidentifier" />
+    <Property Name="Datum" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="StatusMP" Type="int" />
+  </EntityType>
+  <EntityType Name="Turnusi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="idTimeLine" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Usmjerenja">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="ShortName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="ID_smjerovi" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="UsmjerenjeRazred">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ID_Subject" Type="uniqueidentifier" />
+    <Property Name="ID_Teacher" Type="uniqueidentifier" />
+    <Property Name="ID_Class" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Datum" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="ID_version" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="VrstaPredmeta">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Datum" Type="datetime" />
+  </EntityType>
+  <EntityType Name="VrstaRO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Datum" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'dBTesla.dbo.Zvanje' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Zvanje">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Kratica" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Datum" Type="datetime" />
+  </EntityType>
+  <Function Name="CMbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CMbyIDMD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CMbyIDTch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+    <Parameter Name="ParentGuidTCH" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="CMDeatailbyID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ParentGuid" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="dBTeslaModelStoreContainer">
+    <EntitySet Name="ChangeManagementDetail" EntityType="Self.ChangeManagementDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChangeManagementMaster" EntityType="Self.ChangeManagementMaster" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassesDetail" EntityType="Self.ClassesDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Classrooms" EntityType="Self.Classrooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassroomsQ" EntityType="Self.ClassroomsQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClassSubjects" EntityType="Self.ClassSubjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ostalazaduzenja" EntityType="Self.Ostalazaduzenja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periods" EntityType="Self.Periods" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PredmetiUsmjerenja" EntityType="Self.PredmetiUsmjerenja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Smjerovi" EntityType="Self.Smjerovi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubjectDetail" EntityType="Self.SubjectDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subjects" EntityType="Self.Subjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeacherQ" EntityType="Self.TeacherQ" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Teachers" EntityType="Self.Teachers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TeacherSubjects" EntityType="Self.TeacherSubjects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Turnusi" EntityType="Self.Turnusi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usmjerenja" EntityType="Self.Usmjerenja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsmjerenjeRazred" EntityType="Self.UsmjerenjeRazred" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VrstaPredmeta" EntityType="Self.VrstaPredmeta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VrstaRO" EntityType="Self.VrstaRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zvanje" EntityType="Self.Zvanje" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Zvanje].[ID] AS [ID], 
+    [Zvanje].[Name] AS [Name], 
+    [Zvanje].[Kratica] AS [Kratica], 
+    [Zvanje].[Status] AS [Status], 
+    [Zvanje].[Datum] AS [Datum]
+    FROM [dbo].[Zvanje] AS [Zvanje]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
